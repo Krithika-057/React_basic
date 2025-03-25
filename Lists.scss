@@ -1,0 +1,44 @@
+$primary-color: #4caf50;
+$secondary-color: #fff;
+$border-radius: 10px;
+$text-color: #555;
+$divider-color: #ddd;
+
+@mixin flex-center {
+  display:block;
+  justify-content: center;
+  align-items: center;
+}
+
+%box-shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#user-list-container {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 20px;
+  background: $secondary-color;
+  border-radius: $border-radius;
+  @extend %box-shadow;
+  width: 300px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid $divider-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  p {
+    color: $text-color;
+    font-style: italic;
+  }
+}

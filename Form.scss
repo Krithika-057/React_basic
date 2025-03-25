@@ -1,0 +1,83 @@
+// Variables
+$primary-color: #b46cca;
+$secondary-color: #fff;
+$error-color: red;
+$border-radius: 10px;
+$input-border: #ddd;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-style($bg-color) {
+  width: 100%;
+  padding: 10px;
+  background: $bg-color;
+  color: $secondary-color;
+  border: none;
+  border-radius: $border-radius / 2;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: darken($bg-color, 10%);
+  }
+}
+
+// Extends
+%box-shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+// Styling
+#form-container {
+  @include flex-center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+
+  form {
+    background: $secondary-color;
+    padding: 20px;
+    border-radius: $border-radius;
+    @extend %box-shadow;
+    width: 300px;
+
+    div {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid $input-border;
+        border-radius: 5px;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+
+      span {
+        color: $error-color;
+        font-size: 0.8rem;
+        margin-top: 5px;
+        display: block;
+      }
+    }
+
+    button {
+      @include button-style($primary-color);
+    }
+  }
+}
